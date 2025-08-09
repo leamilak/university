@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEMO LOGIN — FOR LEARNING ONLY</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f2f4f7; display:flex; height:100vh; align-items:center; justify-content:center; margin:0; }
+    .card { background:white; padding:28px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); width:320px; }
+    h1{font-size:18px;margin:0 0 12px;color:#333}
+    .note{font-size:12px;color:#a00;margin-bottom:12px}
+    label{display:block;margin-top:10px;font-size:13px;color:#444}
+    input[type="text"], input[type="password"]{width:100%;padding:10px;margin-top:6px;border-radius:6px;border:1px solid #d9dde3}
+    button{margin-top:16px;width:100%;padding:10px;border-radius:8px;border:0;background:#2b7cff;color:white;font-weight:600;cursor:pointer}
+    .result{margin-top:12px;font-size:13px}
+    small{display:block;margin-top:8px;color:#666}
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="title">
+    <h1 id="title">DEMO LOGIN — FOR LEARNING ONLY</h1>
+    <div class="note">This is a local demo page — do not collect or use real credentials here.</div>
+
+    <form id="loginForm" action="/demo-login" method="post" autocomplete="off">
+      <label for="user">Username or email</label>
+      <input id="user" name="username" type="text" required />
+
+      <label for="pass">Password</label>
+      <input id="pass" name="password" type="password" required />
+
+      <button type="submit">Sign in (Demo)</button>
+    </form>
+
+    <div class="result" id="result"></div>
+    <small>Tip: This demo demonstrates front-end form submission only. Backend stores nothing permanently.</small>
+  </div>
+
+  <script>
+    // Optional: intercept submit to show a friendly demo message instead of sending credentials over network.
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const user = document.getElementById('user').value.trim();
+      // For safe demo, do not send real credentials anywhere unless you run the local backend below.
+      document.getElementById('result').textContent = `Demo: received username "${user}". (No real authentication.)`;
+    });
+  </script>
+</body>
+</html>
